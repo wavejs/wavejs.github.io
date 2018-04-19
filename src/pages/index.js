@@ -1,13 +1,43 @@
 import React from 'react'
 import Link from 'gatsby-link'
 
-const IndexPage = () => (
-  <div>
-    <h1>Hi people</h1>
-    <p>Welcome to your new Gatsby site.</p>
-    <p>Now go build something great.</p>
-    <Link to="/page-2/">Go to page 2</Link>
-  </div>
-)
+export default function IndexPage ({ data }) {
+  const { edges: posts} = data.allMarkdownRemark
 
-export default IndexPage
+  return (
+    <div className="blog-posts">
+      {posts
+        .filter(post => post.node.frontmatter.title.length > 0)
+        .map(({ node: post }, idx) => {
+          return (
+            <div key={idx}>
+              <h2>
+                <Link to={post.frontmatter.path}>{post.frontmatter.title}</Link>
+              </h2>
+              <p>{post.frontmatter.date}</p>
+              <p>{post.excerpt}</p>
+            </div>
+          )
+        })
+      }
+    </div>
+  )
+}
+
+export const pageQuery = graphql`
+  query IndexQuery {
+    allMarkdownRemark(sort: { order: DESC, fields: [frontmatter___date] }) {
+      edges {
+        node {
+          excerpt(pruneLength: 250)
+          id
+          frontmatter {
+            title
+            date(formatString: "MMMM DD, YYYY")
+            path
+          }
+        }
+      }
+    }
+  }
+`
