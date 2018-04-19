@@ -21,5 +21,5 @@ $ gatsby develop
 ## Deploy
 
 ```sh
-$ gatsby deploy
+$ yarn deploy
 ```
