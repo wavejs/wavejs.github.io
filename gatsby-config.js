@@ -1,6 +1,6 @@
 module.exports = {
   siteMetadata: {
-    title: 'wavejs.github.io',
+    title: 'wavejs.io',
   },
   plugins: [
     'gatsby-plugin-catch-links',

@@ -10,11 +10,11 @@ Out default branch is `source`. You can write post, create static page in `sourc
 
 **source**
 
-Gatsby's source is here. layouts, pages, templates, sass and others.
+It's default branch of this repo. Gatsby's source is here. layouts, pages, templates, sass and others.
 
 **posts**
 
-Posting contents is here. All posts have to written by markdown.
+Posting contents is here. All posts have to written by markdown. You can write markdown file in pages folder.
 
 **master**
 
